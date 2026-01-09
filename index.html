@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能建设中 - Reborners</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* 背景装饰元素 */
+        .bg-decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2dd4bf, #0d9488);
+            top: 10%;
+            right: 10%;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #0d9488, #2dd4bf);
+            bottom: 15%;
+            left: 10%;
+        }
+        
+        /* 主要内容区域 */
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            position: relative;
+        }
+        
+        /* 主标题 */
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #0d9488;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .main-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: #2dd4bf;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* 副标题 */
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #555;
+            margin-top: 40px;
+            line-height: 1.5;
+        }
+        
+        /* 强调文字 */
+        .highlight {
+            color: #0d9488;
+            font-weight: 500;
+        }
+        
+        /* 进度指示器 */
+        .progress-container {
+            width: 300px;
+            height: 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            margin: 50px auto 30px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, #2dd4bf, #0d9488);
+            border-radius: 3px;
+            animation: progress-animation 3s ease-in-out infinite alternate;
+        }
+        
+        /* 状态文本 */
+        .status-text {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+        
+        /* 简约图标 */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d9488;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .icon:hover {
+            background-color: #e0f2f1;
+            transform: translateY(-5px);
+        }
+        
+        /* 联系信息 */
+        .contact-info {
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.6;
+        }
+        
+        .contact-link {
+            color: #0d9488;
+            text-decoration: none;
+            border-bottom: 1px dotted #0d9488;
+            transition: all 0.2s ease;
+        }
+        
+        .contact-link:hover {
+            color: #2dd4bf;
+            border-bottom: 1px solid #2dd4bf;
+        }
+        
+        /* 动画效果 */
+        @keyframes progress-animation {
+            0% {
+                width: 65%;
+            }
+            100% {
+                width: 75%;
+            }
+        }
+        
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .circle-1, .circle-2 {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰元素 -->
+    <div class="bg-decoration circle-1"></div>
+    <div class="bg-decoration circle-2"></div>
+    
+    <div class="container">
+        <h1 class="main-title fade-in">功能建设中</h1>
+        
+        <p class="subtitle fade-in" style="animation-delay: 0.3s;">
+            <span class="highlight">Reborners</span> 我们拭目以待
+        </p>
+        
+        <div class="progress-container fade-in" style="animation-delay: 0.6s;">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="status-text fade-in" style="animation-delay: 0.8s;">
+            开发进度 · 即将上线
+        </div>
+        
+        <div class="icon-container fade-in" style="animation-delay: 1s;">
+            <div class="icon">🚀</div>
+            <div class="icon">✨</div>
+            <div class="icon">💡</div>
+        </div>
+        
+        <div class="contact-info fade-in" style="animation-delay: 1.2s;">
+            <p>我们正在全力以赴打造更好的体验</p>
+            <p>如有任何问题，请联系 <a href="mailto:contact@reborners.com" class="contact-link">contact@reborners.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        // 添加更多交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 鼠标移动时的视差效果
+            document.addEventListener('mousemove', function(e) {
+                const x = (window.innerWidth - e.pageX * 2) / 100;
+                const y = (window.innerHeight - e.pageY * 2) / 100;
+                
+                const circle1 = document.querySelector('.circle-1');
+                const circle2 = document.querySelector('.circle-2');
+                
+                circle1.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+                circle2.style.transform = `translate(${-x * 0.3}px, ${-y * 0.3}px)`;
+            });
+            
+            // 图标悬浮效果增强
+            const icons = document.querySelectorAll('.icon');
+            icons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.1)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // 进度条动态效果
+            const progressBar = document.querySelector('.progress-bar');
+            setInterval(() => {
+                progressBar.style.width = Math.floor(Math.random() * 15 + 65) + '%';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
